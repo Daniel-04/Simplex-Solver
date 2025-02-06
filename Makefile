@@ -1,8 +1,7 @@
-all: example
-	./example
+all: shared
 
-example: example.c solver.c
-	gcc -o example $^
+shared: solver.c
+	gcc -fPIC -shared -o libsimplex.so $^
 
-clean: example
-	rm -f $^
+clean:
+	rm -f libsimplex.so
