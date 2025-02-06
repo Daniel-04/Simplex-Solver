@@ -6,8 +6,8 @@
 void print_tableau(double **tableau, int m, int n) {
   int rows = m + 1;
   int cols = n + m + 1;
-  for (int i = 0; i < m; i++) {
-    for (int j = 0; j < n; j++) {
+  for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < cols; j++) {
       printf("%lf ", tableau[i][j]);
     }
     printf("\n");
@@ -52,10 +52,10 @@ void print_solution(double **tableau, int m, int n) {
 void simplex(double *c, double **A, double *b, int m, int n) {
   int rows = m + 1;
   int cols = n + m + 1;
-  double **tableau = malloc(sizeof(double *) * rows);
+  double **tableau = calloc(rows, sizeof(double *));
   if (tableau)
     for (int i = 0; i < rows; i++)
-      tableau[i] = malloc(sizeof(double) * cols);
+      tableau[i] = calloc(cols, sizeof(double));
 
   // initial tableau
   for (int i = 0; i < m; i++) {
